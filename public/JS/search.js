@@ -112,7 +112,7 @@ function displayResults(products, query)
 
 function goToProductDetails(productId)
 {
-    window.location.href = `../html/product-details.html?id=${productId}`;
+    window.location.href = `product-details.html?id=${productId}`;
 }
 
 // Initialize when DOM is ready

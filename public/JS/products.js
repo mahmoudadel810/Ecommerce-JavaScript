@@ -19,7 +19,7 @@ async function initializeProducts()
 // Function to navigate to product details
 function goToProductDetails(productId)
 {
-    window.location.href = `../html/product-details.html?id=${productId}`;
+    window.location.href = `product-details.html?id=${productId}`;
 }
 
 // Direct click handler for add to cart buttons
