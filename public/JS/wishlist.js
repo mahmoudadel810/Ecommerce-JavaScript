@@ -164,7 +164,7 @@ document.addEventListener('click', (e) =>
         const productContainer = wishlistButton.closest('.product');
         const productId = parseInt(productContainer.querySelector('.btn_add_cart').dataset.id);
 
-        fetch('../products.json')
+        fetch('https://javascriptserver.vercel.app/api/products')
             .then(response => response.json())
             .then(data =>
             {

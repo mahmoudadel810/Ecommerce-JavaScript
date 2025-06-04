@@ -6,7 +6,7 @@ async function initializeProducts()
 {
     try
     {
-        const response = await fetch('../products.json');
+        const response = await fetch('https://javascriptserver.vercel.app/api/products');
         const data = await response.json();
         allProducts = data.products;
         filteredProducts = [...allProducts];

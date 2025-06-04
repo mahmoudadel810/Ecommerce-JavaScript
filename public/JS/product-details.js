@@ -1,7 +1,3 @@
-
-
-
-
 document.addEventListener('DOMContentLoaded', () =>
 {
     // Get product ID from URL
@@ -15,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () =>
     }
 
     // Fetch product details
-    fetch('../products.json')
+    fetch('https://javascriptserver.vercel.app/api/products')
         .then(response => response.json())
         .then(data =>
         {
@@ -39,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () =>
                 const discountPercentage = Math.floor((product.old_price - product.price) / product.old_price * 100);
                 document.getElementById('discountBadge').textContent = `-${discountPercentage}%`;
             }
-            
+
             else
             {
                 document.getElementById('oldPriceContainer').style.display = 'none';
@@ -72,12 +68,15 @@ document.addEventListener('DOMContentLoaded', () =>
                     return;
                 }
                 // Actually add to wishlist and update counter
-                if (typeof addToWishlist === 'function') {
-                    if (addToWishlist(product)) {
+                if (typeof addToWishlist === 'function')
+                {
+                    if (addToWishlist(product))
+                    {
                         addToWishlistBtn.innerHTML = '<i class="fa-solid fa-heart"></i> Added to Wishlist';
                         addToWishlistBtn.disabled = true;
                     }
-                } else {
+                } else
+                {
                     console.error('addToWishlist function not found!');
                 }
             });

@@ -12,7 +12,7 @@ function initializeSearch()
     // Load products data if not already loaded
     if (allProducts.length === 0)
     {
-        fetch('../products.json')
+        fetch('https://javascriptserver.vercel.app/api/products')
             .then(response => response.json())
             .then(data =>
             {

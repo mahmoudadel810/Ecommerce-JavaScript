@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', function ()
 {
     // Hero Slider Implementation
@@ -203,7 +202,7 @@ document.addEventListener('DOMContentLoaded', function ()
     });
 
     // Modify your fetch code in the original file to call initializeAllSliders after all products are loaded
-    fetch('../products.json')
+    fetch('https://javascriptserver.vercel.app/api/products')
         .then(response => response.json())
         .then(data =>
         {

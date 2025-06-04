@@ -1,8 +1,4 @@
-
-
-
-
-fetch('../products.json')
+fetch('https://javascriptserver.vercel.app/api/products')
     .then(response => response.json())
     .then(data =>
     {
