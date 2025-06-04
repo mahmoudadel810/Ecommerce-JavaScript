@@ -34,19 +34,7 @@ DolaShop is a modern e-commerce web application built with vanilla JavaScript (E
 - GitHub Pages for frontend hosting
 - Vercel for API deployment
 
-## Project Structure
 
-```
-├── public/         # Static files for deployment
-│   ├── index.html  # Main entry point
-│   ├── css/        # Styling files
-│   ├── JS/         # JavaScript modules
-│   └── img/        # Images and assets
-├── server/         # Backend API
-│   ├── index.js    # Express server
-│   └── products.json # Product database
-└── vercel.json     # Vercel deployment configuration
-```
 
 ## API Endpoints
 
