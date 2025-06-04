@@ -165,7 +165,7 @@ function updateCartDisplay()
         <div class="empty-cart">
           <i class="fa-solid fa-cart-shopping"></i>
           <p>Your cart is empty</p>
-          <a href="../html/products.html" class="btn">Continue Shopping</a>
+          <a href="products.html" class="btn">Continue Shopping</a>
         </div>
       `;
     } else
