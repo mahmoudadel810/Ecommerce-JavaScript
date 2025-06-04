@@ -9,8 +9,11 @@
 ## Project Overview
 
 DolaShop is a modern e-commerce web application built with vanilla JavaScript (ES6+), HTML5, and CSS3. The project demonstrates core e-commerce functionality with clean code organization and responsive design.
+<img width="1435" alt="Screenshot 2025-06-04 at 10 18 03 AM" src="https://github.com/user-attachments/assets/c0c7c244-a8f2-4874-816b-b92ee1fd8a42" />
 
-![Screenshot 2025-05-15 at 3 59 32 PM](https://github.com/user-attachments/assets/3094be1a-1f81-42d5-a696-82d90b9f9b95)
+<img width="1435" alt="Screenshot 2025-06-04 at 10 18 03 AM" src="https://github.com/user-attachments/assets/c0c7c244-a8f2-4874-816b-b92ee1fd8a42" />
+
+<img width="1435" alt="Screenshot 2025-06-04 at 10 18 23 AM" src="https://github.com/user-attachments/assets/73b54d78-9c86-4a6c-ae74-6db7b377e7bd" />
 
 ## Key Features
 
@@ -58,13 +61,15 @@ DolaShop is a modern e-commerce web application built with vanilla JavaScript (E
 2. Open `public/index.html` in your browser to view the frontend
 3. Browse the shop, create an account, and start shopping!
 
+
 ## Development
 
 To run the project locally with the API:
 
 1. Install dependencies: `npm install`
 2. Start the server: `node server/index.js`
-3. The API will be available at `http://localhost:3000`
+3. # The API will be available at `http://localhost:3000`
+
 
 ## Future Development
 
