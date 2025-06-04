@@ -1,0 +1,590 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <!-- swiper lib for slider -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" /> -->
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Dola Shop</title>
+  </head>
+
+  <body>
+    <div class="cart">
+      <div class="top_cart">
+        <h3>Cart Items: <span class="Count_item_cart">0</span></h3>
+        <span class="close_cart" onclick="open_close_cart()">
+          <i class="fa-regular fa-circle-xmark"></i>
+        </span>
+      </div>
+
+
+      <div class="items_in_cart" id="cart_items">
+        <!-- Cart items will be populated here -->
+      </div>
+
+      <div class="bottom_cart">
+        <div class="total">
+          <p>Subtotal:</p>
+          <p class="price_cart_total">$0</p>
+        </div>
+
+        <div class="button_cart">
+          <a href="../html/checkout.html" class="btn_cart btn">Checkout</a>
+          <button onclick="open_close_cart()" class="btn_cart trans_bg btn">
+            Continue Shopping
+          </button>
+        </div>
+      
+      </div>
+    </div>
+
+
+    <!-- Wishlist Sidebar -->
+    <div class="wishlist-sidebar">
+      <div class="top_wishlist">
+        <h3>Wishlist Items: <span class="count_wishlist_items">0</span></h3>
+        <span class="close_wishlist"
+          ><i class="fa-regular fa-circle-xmark"></i
+        ></span>
+      </div>
+
+      <div class="items_in_wishlist" id="wishlist_items">
+        <!-- Wishlist items will be populated here -->
+      </div>
+
+      <div class="bottom_wishlist">
+        <div class="button_wishlist">
+          <button class="btn_wishlist trans_bg btn">Continue Shopping</button>
+          <button onclick="moveAllToCart()" class="btn_wishlist btn">
+            Move All to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Header -->
+    <header>
+      <div class="top_header">
+        <div class="container"> 
+          <a href="../html/index.html" class="logo"> <img src="../img/logo3.png" alt="" /></a>
+
+          <div class="search-container" style="position:relative; width:100%;">
+
+            <form action="" class="search_box">
+            <div class="select_box">
+              <select id="category" name="category">
+                <option value="All Categories">All Categories</option>
+                <option value="AllProducts">
+                  All Products 
+                </option>
+                <option value="Phones & Tablet">Phones & Tablety</option>
+                <option value="Laptop & Tablet">Laptop & computers</option>
+              
+              </select>
+            </div>
+
+            <input
+              type="text"
+              name="search"
+              id="search"
+              placeholder="Search for Products"
+              required />
+
+            <button type="submit">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </form>
+            <div class="search-results" id="searchResults">
+              <!-- Search results will be populated here -->
+            </div>
+          </div>
+
+          <div class="header_icons">
+            <div class="icon" onclick="toggleWishlistSidebar()">
+              <i class="fa-regular fa-heart"></i>
+              <span class="count count_favourite">0</span>
+            </div>
+
+            <div class="icon" onclick="open_close_cart()">
+              <i class="fa-solid fa-cart-shopping"></i>
+              <span class="count count_item_header">0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom_header">
+        <div class="container">
+          <nav class="nav">
+            <span onclick="open_Menu()" class="open_menu"
+              ><i class="fa-solid fa-bars"></i
+            ></span>
+
+            <div class="category_nav">
+              <div onclick="Open_Categ_list()" class="category_btn">
+                <i class="fa-solid fa-bars"></i>
+                <p>Browse Category</p>
+                <i class="fa-solid fa-angle-down"></i>
+              </div>
+
+              <div class="category_nav_list">
+                <a href="../html/products.html">All Products</a>
+                <a href="#">Top 10 Offers</a>
+                <a href="#">Electronics & Digital</a>
+                <a href="#">Phones & Tablet</a>
+                <a href="#">Fashion & Clothings</a>
+                <a href="#">Television & Monitor</a>
+                <a href="#">Jewelry & Watches</a>
+                <a href="#">Toys & Hobbies</a>
+              </div>
+            </div>
+
+            <ul class="nav_links">
+              <span onclick="open_Menu()" class="close_menu"
+                ><i class="fa-regular fa-circle-xmark"></i
+              ></span>
+
+              <li><a href="../html/index.html">Home</a></li>
+              <li><a href="../html/products.html">All Products</a></li>
+              <li><a href="../html/about.html">About</a></li>
+              <li><a href="#">Accessories</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="../html/contact.html">Contact</a></li>
+            </ul>
+          </nav>
+
+          <div class="login_signup btns">
+            <div class="user-dropdown" id="userDropdown" style="display: none">
+              <div class="dropdown-toggle btn">
+                <i class="fa-solid fa-user"></i>
+                <span id="userName"></span>
+                <i class="fa-solid fa-angle-down"></i>
+              </div>
+              <div class="dropdown-menu">
+                <a href="#"><i class="fa-solid fa-user-circle"></i> Profile</a>
+                <a href="#" id="logoutBtn"
+                  ><i class="fa-solid fa-sign-out-alt"></i> Logout</a
+                >
+              </div>
+            </div>
+
+            <div id="authButtons">
+              <a href="../html/login.html" class="btn"
+                >Login <i class="fa-solid fa-right-to-bracket"></i
+              ></a>
+              <a href="../html/signup.html" class="btn"
+                >Sign UP <i class="fa-solid fa-user-plus"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Slider Section -->
+    <section class="slider">
+      <div class="container">
+        <div class="slider-track">
+          <div class="slider-track-inner">
+            <div class="slide">
+              <img
+                src="https://images.pexels.com/photos/4968391/pexels-photo-4968391.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                alt="Slider 1" />
+            </div>
+            <div class="slide">
+              <img
+                src="https://img.freepik.com/free-psd/new-smartphone-social-media-cover-design-template_47987-25433.jpg"
+                alt="Slider 2" />
+            </div>
+            <div class="slide">
+              <img
+                src="https://img.freepik.com/premium-vector/new-laptop-sale-promotion-social-facebook-cover-banner_252779-424.jpg"
+                alt="Slider 2" />
+            </div>
+          </div>
+          <!-- Navigation Buttons -->
+          <button class="slider-nav slider-prev">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="slider-nav slider-next">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+        <div class="banner_2">
+          <img
+            src="https://images.pexels.com/photos/5077061/pexels-photo-5077061.jpeg?auto=compress&cs=tinysrgb&w=1200"
+            alt="Banner 2" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Product Sliders -->
+    <section class="slide">
+      <div class="container">
+        <div class="top_slide">
+          <h2><i class="fas fa-fire"></i> Hot Deals</h2>
+        </div>
+        <div class="slide_product">
+          <div class="products" id="swiper_items_sale">
+            <!-- Products will be loaded dynamically -->
+          </div>
+          <button class="slider-nav slider-prev">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="slider-nav slider-next">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="container">
+        <div class="top_slide">
+          <h2><i class="fas fa-laptop"></i> Electronics</h2>
+        </div>
+        <div class="slide_product">
+          <div class="products" id="swiper_elctronics">
+            <!-- Products will be loaded dynamically -->
+          </div>
+          <button class="slider-nav slider-prev">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="slider-nav slider-next">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <div class="banners_4">
+      <div class="container">
+        <div class="box">
+          <a href="#" class="link_btn"></a>
+          <img
+            src="https://images.pexels.com/photos/3757055/pexels-photo-3757055.jpeg"
+            alt="Banner" />
+          <div class="text">
+            <h5>Break Disc</h5>
+            <h5>deals on this</h5>
+            <div class="sale">
+              <p>
+                Up <br />
+                To
+              </p>
+              <span>70%</span>
+            </div>
+            <h6>Shop Now</h6>
+          </div>
+        </div>
+
+        <div class="box">
+          <a href="#" class="link_btn"></a>
+          <img
+            src="https://images.pexels.com/photos/5632402/pexels-photo-5632402.jpeg"
+            alt="Banner" />
+          <div class="text">
+            <h5>Break Disc</h5>
+            <h5>deals on this</h5>
+            <div class="sale">
+              <p>
+                Up <br />
+                To
+              </p>
+              <span>70%</span>
+            </div>
+            <h6>Shop Now</h6>
+          </div>
+        </div>
+
+        <div class="box">
+          <a href="#" class="link_btn"></a>
+          <img
+            src="https://images.pexels.com/photos/607812/pexels-photo-607812.jpeg"
+            alt="Banner" />
+          <div class="text">
+            <h5>Break Disc</h5>
+            <h5>deals on this</h5>
+            <div class="sale">
+              <p>
+                Up <br />
+                To
+              </p>
+              <span>70%</span>
+            </div>
+            <h6>Shop Now</h6>
+          </div>
+        </div>
+
+        <div class="box">
+          <a href="#" class="link_btn"></a>
+          <img
+            src="https://images.pexels.com/photos/845451/pexels-photo-845451.jpeg"
+            alt="Banner" />
+          <div class="text">
+            <h5>Break Disc</h5>
+            <h5>deals on this</h5>
+            <div class="sale">
+              <p>
+                Up <br />
+                To
+              </p>
+              <span>70%</span>
+            </div>
+            <h6>Shop Now</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="slide">
+      <div class="container">
+        <div class="top_slide">
+          <h2><i class="fas fa-tv"></i> Appliances</h2>
+        </div>
+        <div class="slide_product">
+          <div class="products" id="swiper_appliances">
+            <!-- Products will be loaded dynamically -->
+          </div>
+          <button class="slider-nav slider-prev">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="slider-nav slider-next">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="container">
+        <div class="top_slide">
+          <h2><i class="fas fa-mobile-alt"></i> Mobiles</h2>
+        </div>
+        <div class="slide_product">
+          <div class="products" id="swiper_mobiles">
+            <!-- Products will be loaded dynamically -->
+          </div>
+          <button class="slider-nav slider-prev">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <
+          <button class="slider-nav slider-next">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Banners Section -->
+    <div class="banners_4">
+      <div class="container">
+        <div class="box">
+          <a href="#" class="link_btn"></a>
+          <img
+            src="https://images.pexels.com/photos/3757055/pexels-photo-3757055.jpeg"
+            alt="Banner" />
+          <div class="text">
+            <h5>Break Disc</h5>
+            <h5>deals on this</h5>
+            <div class="sale">
+              <p>
+                Up <br />
+                To
+              </p>
+              <span>70%</span>
+            </div>
+            <h6>Shop Now</h6>
+          </div>
+        </div>
+
+        <div class="box">
+          <a href="#" class="link_btn"></a>
+          <img
+            src="https://images.pexels.com/photos/5632402/pexels-photo-5632402.jpeg"
+            alt="Banner" />
+          <div class="text">
+            <h5>Break Disc</h5>
+            <h5>deals on this</h5>
+            <div class="sale">
+              <p>
+                Up <br />
+                To
+              </p>
+              <span>70%</span>
+            </div>
+            <h6>Shop Now</h6>
+          </div>
+        </div>
+
+        <div class="box">
+          <a href="#" class="link_btn"></a>
+          <img
+            src="https://images.pexels.com/photos/607812/pexels-photo-607812.jpeg"
+            alt="Banner" />
+          <div class="text">
+            <h5>Break Disc</h5>
+            <h5>deals on this</h5>
+            <div class="sale">
+              <p>
+                Up <br />
+                To
+              </p>
+              <span>70%</span>
+            </div>
+            <h6>Shop Now</h6>
+          </div>
+        </div>
+
+        <div class="box">
+          <a href="#" class="link_btn"></a>
+          <img
+            src="https://images.pexels.com/photos/845451/pexels-photo-845451.jpeg"
+            alt="Banner" />
+          <div class="text">
+            <h5>Break Disc</h5>
+            <h5>deals on this</h5>
+            <div class="sale">
+              <p>
+                Up <br />
+                To
+              </p>
+              <span>70%</span>
+            </div>
+            <h6>Shop Now</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="banners">
+      <div class="container">
+        <div class="banners_boxs banner_3_img">
+          <a href="#" class="box"
+            ><img
+              src="https://images.pexels.com/photos/5632402/pexels-photo-5632402.jpeg"
+              alt="Banner Box 1"
+          /></a>
+          <a href="#" class="box"
+            ><img
+              src="https://images.pexels.com/photos/607812/pexels-photo-607812.jpeg"
+              alt="Banner Box 2"
+          /></a>
+          <a href="#" class="box"
+            ><img
+              src="https://images.pexels.com/photos/845451/pexels-photo-845451.jpeg"
+              alt="Banner Box 3"
+          /></a>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="container">
+        <div class="big_row">
+          <img class="logo_footer" src="../img/logo3.png" alt="" />
+
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi,
+            vero?
+          </p>
+
+          <div class="icons_footer">
+            <a href="#"><i class="fa-solid fa-phone"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+          </div>
+        </div>
+
+        <div class="row">
+          <h4>Find It Fast</h4>
+          <div class="links">
+            <a href="../html/products.html"
+              ><i class="fa-solid fa-caret-right"></i> All Products</a
+            >
+            <a href="#"
+              ><i class="fa-solid fa-caret-right"></i> Laptops & Computers</a
+            >
+            <a href="#"
+              ><i class="fa-solid fa-caret-right"></i> Smart Phones & Tablets</a
+            >
+            <a href="#"><i class="fa-solid fa-caret-right"></i> TV & Audio</a>
+            <a href="#"><i class="fa-solid fa-caret-right"></i> Appliances</a>
+            <a href="#"
+              ><i class="fa-solid fa-caret-right"></i> Jewelry & Watches</a
+            >
+          </div>
+        </div>
+
+        <div class="row">
+          <h4>Quick Links</h4>
+
+          <div class="links">
+            <a href="#"
+              ><i class="fa-solid fa-caret-right"></i> Your Account
+            </a>
+            <a href="#"
+              ><i class="fa-solid fa-caret-right"></i> Returns & Exchanges</a
+            >
+            <a href="#"
+              ><i class="fa-solid fa-caret-right"></i> Shipping & Delivery</a
+            >
+            <a href="#"
+              ><i class="fa-solid fa-caret-right"></i> Estimated Delivery
+              Time</a
+            >
+            <a href="#"
+              ><i class="fa-solid fa-caret-right"></i> Purchase Hisotry</a
+            >
+          </div>
+        </div>
+
+        <div class="row">
+          <h4>Service us</h4>
+
+          <div class="links">
+            <a href="#"
+              ><i class="fa-solid fa-caret-right"></i> Support Center</a
+            >
+            <a href="#"
+              ><i class="fa-solid fa-caret-right"></i> Term & Conditions</a
+            >
+            <a href="#"
+              ><i class="fa-solid fa-caret-right"></i> Privacy Policy</a
+            >
+            <a href="#"><i class="fa-solid fa-caret-right"></i> Help</a>
+            <a href="#"><i class="fa-solid fa-caret-right"></i> FAQS</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom_footer">
+        <div class="container">
+          <p>&copy; <span>Dola Store.</span> All Rights Reserved To ITI</p>
+
+          <div class="payment_img">
+            <img src="../img/payment_method.png" alt="" />
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Swiper JS -->
+
+    <!-- File JS -->
+    <script src="../JS/items_home.js"></script>
+    <script src="../JS/product-slider.js"></script>
+    <script src="../JS/main.js"></script>
+    <script src="../JS/search.js"></script>
+    <script src="../JS/wishlist.js"></script>
+  </body>
+</html>

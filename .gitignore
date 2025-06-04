@@ -1,0 +1,10 @@
+node_modules
+.env
+server
+server/node_modules
+server/.env
+
+
+.github/workflows/static.yml
+
+Code gs.txt

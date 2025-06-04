@@ -1,0 +1,341 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Online Store</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    
+    <!-- File CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <div class="cart">
+        <div class="top_cart">
+            <h3>Cart Items: <span class="Count_item_cart">0</span></h3>
+            <span class="close_cart" onclick="open_close_cart()">
+                <i class="fa-regular fa-circle-xmark"></i>
+            </span>
+        </div>
+
+        <div class="items_in_cart" id="cart_items">
+            <!-- Cart items will be populated here -->
+        </div>
+
+        <div class="bottom_cart">
+            <div class="total">
+                <p>Subtotal:</p>
+                <p class="price_cart_total">$0</p>
+            </div>
+
+            <div class="button_cart">
+                <a href="../html/checkout.html" class="btn_cart btn">Checkout</a>
+                <button onclick="open_close_cart()" class="btn_cart trans_bg btn">Continue Shopping</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="wishlist-sidebar">
+        <div class="top_wishlist">
+            <h3>Wishlist Items: <span class="count_wishlist_items">0</span></h3>
+            <span class="close_wishlist"><i class="fa-regular fa-circle-xmark"></i></span>
+        </div>
+
+        <div class="items_in_wishlist" id="wishlist_items">
+            <!-- Wishlist items will be populated here -->
+        </div>
+
+        <div class="bottom_wishlist">
+            <div class="button_wishlist">
+                <button class="btn_wishlist trans_bg btn">Continue Shopping</button>
+                <button onclick="moveAllToCart()" class="btn_wishlist btn">Move All to Cart</button>
+            </div>
+        </div>
+    </div>
+     <header>
+        <div class="top_header">
+            <div class="container">
+                <a href="#" class="logo"> <img src="../img/logo3.png" alt=""></a>
+
+              <div class="search-container" style="position:relative; width:100%;">
+            <form action="" class="search_box">
+            <div class="select_box">
+              <select id="category" name="category">
+                <option value="All Categories">All Categories</option>
+                <option value="Electronics & Digita">
+                  Electronics & Digita
+                </option>
+                <option value="Phones & Tablet">Phones & Tablety</option>
+                <option value="Fashion & Clothings">Fashion & Clothings</option>
+                <option value="Telivsion & Monitor">Telivsion & Monitor</option>
+                <option value="Jewelry & Watches">Jewelry & Watches</option>
+                <option value="Washing Machine">Washing Machine</option>
+                <option value="Toys & Hobbies">Toys & Hobbies</option>
+              </select>
+            </div>
+
+            <input
+              type="text"
+              name="search"
+              id="search"
+              placeholder="Search for Products"
+              required />
+
+            <button type="submit">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </form>
+            <div class="search-results" id="searchResults">
+              <!-- Search results will be populated here -->
+            </div>
+          </div>
+
+                <div class="header_icons">
+                    <div class="icon" onclick="toggleWishlistSidebar()">
+                        <i class="fa-regular fa-heart"></i>
+                        <span class="count count_favourite">0</span>
+                    </div>
+
+                    <div class="icon" onclick="open_close_cart()">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span class="count count_item_header">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="bottom_header">
+            <div class="container">
+                <nav class="nav">
+
+                    <span onclick="open_Menu()" class="open_menu"><i class="fa-solid fa-bars"></i></span>
+
+                    <div class="category_nav">
+
+                        <div onclick="Open_Categ_list()" class="category_btn">
+                            <i class="fa-solid fa-bars"></i>
+                            <p>Browse Category</p>
+                            <i class="fa-solid fa-angle-down"></i>
+
+                        </div>
+
+
+                        <div class="category_nav_list">
+                            <a href="../html/products.html">All Products</a>
+                            <a href="#">Top 10 Offers</a>
+                            <a href="#">Electronics & Digital</a>
+                            <a href="#">Phones & Tablet</a>
+                            <a href="#">Fashion & Clothings</a>
+                            <a href="#">Television & Monitor</a>
+                            <a href="#">Jewelry & Watches</a>
+                            <a href="#">Toys & Hobbies</a>
+                        </div>
+
+                    </div>
+
+                    <ul class="nav_links">
+
+                        <span onclick="open_Menu()" class="close_menu"><i class="fa-regular fa-circle-xmark"></i></span>
+
+                        <li><a href="../html/index.html">Home</a></li>
+                        <li><a href="../html/products.html">All Products</a></li>
+                        <li><a href="../html/about.html">About</a></li>
+                        <li><a href="#">Accessories</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="../html/contact.html">Contact</a></li>
+
+                    </ul>
+
+                </nav>
+
+                <div class="login_signup btns">
+                    <div class="user-dropdown" id="userDropdown" style="display: none;">
+                        <div class="dropdown-toggle btn">
+                            <i class="fa-solid fa-user"></i>
+                            <span id="userName"></span>
+                            <i class="fa-solid fa-angle-down"></i>
+                        </div>
+                        <div class="dropdown-menu">
+                            <a href="#"><i class="fa-solid fa-user-circle"></i> Profile</a>
+                            <a href="#" id="logoutBtn"><i class="fa-solid fa-sign-out-alt"></i> Logout</a>
+                        </div>
+                    </div>
+
+                    <div id="authButtons">
+                        <a href="../html/login.html" class="btn">Login <i class="fa-solid fa-right-to-bracket"></i></a>
+                        <a href="../html/signup.html" class="btn">Sign UP <i class="fa-solid fa-user-plus"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        
+    </header>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <!-- Contact Hero -->
+            <div class="contact-hero">
+                <h1>Contact Us</h1>
+                <p>We're here to help and answer any questions you might have</p>
+            </div>
+
+            <div class="contact-content">
+                <!-- Contact Information -->
+                <div class="contact-info">
+                    <h2>Get in Touch</h2>
+                    <div class="info-items">
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h3>Location</h3>
+                                <p>123 Store Street, Cairo, Egypt</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <div>
+                                <h3>Phone</h3>
+                                <p>+20 123 456 7890</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h3>Email</h3>
+                                <p>support@dolastore.com</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h3>Working Hours</h3>
+                                <p>Mon - Fri: 9:00 AM - 10:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+                        <h3>Follow Us</h3>
+                        <div class="social-icons">
+                            <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form">
+                    <h2>Send us a Message</h2>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            Send Message <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+          
+        </div>
+    </section>
+
+    <!-- Footer -->
+      <footer>
+        <div class="container">
+
+            <div class="big_row">
+                <img class="logo_footer" src="../img/logo3.png" alt="">
+
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi, vero?</p>
+
+                <div class="icons_footer">
+                    <a href="#"><i class="fa-solid fa-phone"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+
+            <div class="row">
+                <h4>Find It Fast</h4>
+                <div class="links">
+                    <a href="../html/products.html"><i class="fa-solid fa-caret-right"></i> All Products</a>
+                    <a href="#"><i class="fa-solid fa-caret-right"></i> Laptops & Computers</a>
+                    <a href="#"><i class="fa-solid fa-caret-right"></i> Smart Phones & Tablets</a>
+                    <a href="#"><i class="fa-solid fa-caret-right"></i> TV & Audio</a>
+                    <a href="#"><i class="fa-solid fa-caret-right"></i> Appliances</a>
+                    <a href="#"><i class="fa-solid fa-caret-right"></i> Jewelry & Watches</a>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <h4>Quick Links</h4>
+
+                <div class="links">
+                    <a href="#"><i class="fa-solid fa-caret-right"></i> Your Account </a>
+                    <a href="#"><i class="fa-solid fa-caret-right"></i> Returns & Exchanges</a>
+                    <a href="#"><i class="fa-solid fa-caret-right"></i> Shipping & Delivery</a>
+                    <a href="#"><i class="fa-solid fa-caret-right"></i> Estimated Delivery Time</a>
+                    <a href="#"><i class="fa-solid fa-caret-right"></i> Purchase Hisotry</a>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <h4>Service us</h4>
+
+                <div class="links">
+                    <a href="#"><i class="fa-solid fa-caret-right"></i> Support Center</a>
+                    <a href="#"><i class="fa-solid fa-caret-right"></i> Term & Conditions</a>
+                    <a href="#"><i class="fa-solid fa-caret-right"></i> Privacy Policy</a>
+                    <a href="#"><i class="fa-solid fa-caret-right"></i> Help</a>
+                    <a href="#"><i class="fa-solid fa-caret-right"></i> FAQS</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom_footer">
+            <div class="container">
+                <p>&copy; <span>Dola Store.</span> All Rights Reserved To ITI</p>
+
+                <div class="payment_img">
+                    <img src="../img/payment_method.png" alt="">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../JS/contact.js"></script>
+    <script src="../JS/cart.js"></script>
+    <script src="../JS/wishlist.js"></script>
+    <script src="../JS/search.js"></script>
+    <script src="../JS/main.js"></script>
+</body>
+</html>

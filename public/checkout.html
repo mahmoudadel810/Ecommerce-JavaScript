@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dola Shop | Checkout</title>
+
+
+    <link rel="icon" href="img/icon.png">
+
+
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+         <!-- File CSS -->
+         <link rel="stylesheet" href="../css/style.css">
+    </head>
+<body>
+
+    <div class="cart">
+        <div class="top_cart">
+            <h3>Cart Items: <span class="Count_item_cart">0</span></h3>
+            <span class="close_cart" onclick="open_close_cart()">
+                <i class="fa-regular fa-circle-xmark"></i>
+            </span>
+        </div>
+
+        <div class="items_in_cart" id="cart_items">
+            <!-- Cart items will be populated here -->
+        </div>
+
+        <div class="bottom_cart">
+            <div class="total">
+                <p>Subtotal:</p>
+                <p class="price_cart_total">$0</p>
+            </div>
+
+            <div class="button_cart">
+                <a href="../html/checkout.html" class="btn_cart btn">Checkout</a>
+                <button onclick="open_close_cart()" class="btn_cart trans_bg btn">Continue Shopping</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="wishlist-sidebar">
+        <div class="top_wishlist">
+            <h3>Wishlist Items: <span class="count_wishlist_items">0</span></h3>
+            <span class="close_wishlist"><i class="fa-regular fa-circle-xmark"></i></span>
+        </div>
+
+        <div class="items_in_wishlist" id="wishlist_items">
+            <!-- Wishlist items will be populated here -->
+        </div>
+
+        <div class="bottom_wishlist">
+            <div class="button_wishlist">
+                <button class="btn_wishlist trans_bg btn">Continue Shopping</button>
+                <button onclick="moveAllToCart()" class="btn_wishlist btn">Move All to Cart</button>
+            </div>
+        </div>
+    </div>
+  <header>
+      <div class="top_header">
+        <div class="container">
+          <a href="#" class="logo"> <img src="../img/logo3.png" alt="" /></a>
+
+           <div class="search-container" style="position:relative; width:100%;">
+
+            <form action="" class="search_box">
+            <div class="select_box">
+              <select id="category" name="category">
+                <option value="All Categories">All Categories</option>
+                <option value="AllProducts">
+                  All Products 
+                </option>
+                <option value="Phones & Tablet">Phones & Tablety</option>
+                <option value="Laptop & Tablet">Laptop & computers</option>
+              
+              </select>
+            </div>
+
+            <input
+              type="text"
+              name="search"
+              id="search"
+              placeholder="Search for Products"
+              required />
+
+            <button type="submit">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </form>
+            <div class="search-results" id="searchResults">
+              <!-- Search results will be populated here -->
+            </div>
+          </div>
+
+          <div class="header_icons">
+            <div class="icon" onclick="toggleWishlistSidebar()">
+              <i class="fa-regular fa-heart"></i>
+              <span class="count count_favourite">0</span>
+            </div>
+
+            <div class="icon" onclick="open_close_cart()">
+              <i class="fa-solid fa-cart-shopping"></i>
+              <span class="count count_item_header">0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom_header">
+        <div class="container">
+          <nav class="nav">
+            <span onclick="open_Menu()" class="open_menu"
+              ><i class="fa-solid fa-bars"></i
+            ></span>
+
+            <div class="category_nav">
+              <div onclick="Open_Categ_list()" class="category_btn">
+                <i class="fa-solid fa-bars"></i>
+                <p>Browse Category</p>
+                <i class="fa-solid fa-angle-down"></i>
+              </div>
+
+              <div class="category_nav_list">
+                <a href="../html/products.html">All Products</a>
+                <a href="#">Top 10 Offers</a>
+                <a href="#">Electronics & Digital</a>
+                <a href="#">Phones & Tablet</a>
+                <a href="#">Fashion & Clothings</a>
+                <a href="#">Television & Monitor</a>
+                <a href="#">Jewelry & Watches</a>
+                <a href="#">Toys & Hobbies</a>
+              </div>
+            </div>
+
+            <ul class="nav_links">
+              <span onclick="open_Menu()" class="close_menu"
+                ><i class="fa-regular fa-circle-xmark"></i
+              ></span>
+
+              <li><a href="../html/index.html">Home</a></li>
+              <li><a href="../html/products.html">All Products</a></li>
+              <li><a href="../html/about.html">About</a></li>
+              <li><a href="#">Accessories</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="../html/contact.html">Contact</a></li>
+            </ul>
+          </nav>
+
+          <div class="login_signup btns">
+            <div class="user-dropdown" id="userDropdown" style="display: none">
+              <div class="dropdown-toggle btn">
+                <i class="fa-solid fa-user"></i>
+                <span id="userName"></span>
+                <i class="fa-solid fa-angle-down"></i>
+              </div>
+              <div class="dropdown-menu">
+                <a href="#"><i class="fa-solid fa-user-circle"></i> Profile</a>
+                <a href="#" id="logoutBtn"
+                  ><i class="fa-solid fa-sign-out-alt"></i> Logout</a
+                >
+              </div>
+            </div>
+
+            <div id="authButtons">
+              <a href="../html/login.html" class="btn"
+                >Login <i class="fa-solid fa-right-to-bracket"></i
+              ></a>
+              <a href="../html/signup.html" class="btn"
+                >Sign UP <i class="fa-solid fa-user-plus"></i
+              ></a>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </header>
+                <a href="#" class="btn_cart btn">Checkout</a>
+                <span onclick="open_close_cart()" class="btn_cart trans_bg btn">Shop More</span>
+            </div>
+        </div>
+
+    </div>
+
+    <section class="checkout">
+        <form id="checkoutForm">
+            <div class="container">
+                <!-- Left side - Order Summary -->
+                <div class="ordersummary">
+                    <h1>Order Summary</h1>
+                    <div class="items" id="checkout_items">
+                        <!-- Items will be populated here -->
+                    </div>
+                    <div class="bottom_summary">
+                        <div class="shop_table">
+                            <p>Subtotal:</p>
+                            <span class="subtotal_checkout">$0.00</span>
+                        </div>
+                        <div class="shop_table">
+                            <p>Shipping:</p>
+                            <span>$20.00</span>
+                        </div>
+                        <div class="shop_table">
+                            <p>Total:</p>
+                            <span class="total_checkout">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right side - Customer Information -->
+                <div class="input_info">
+                    <!-- Shipping Information -->
+                    <div class="address">
+                        <h2>Shipping Information</h2>
+                        <div class="inputs">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+
+                            <label for="address">Street Address</label>
+                            <input type="text" id="address" name="address" required>
+
+                            <label for="city">City</label>
+                            <input type="text" id="city" name="city" required>
+
+                            <div class="form-group">
+                                <label for="country">Country</label>
+                                <select id="country" name="country" required>
+                                    <option value="" disabled selected>Select your country</option>
+                                    <option value="EG">Egypt</option>
+                                    <option value="US">United States</option>
+                                    <option value="UK">United Kingdom</option>
+                                    <option value="CA">Canada</option>
+                                    <option value="FR">France</option>
+                                    <option value="DE">Germany</option>
+                                    <option value="IT">Italy</option>
+                                    <option value="ES">Spain</option>
+                                    <option value="AU">Australia</option>
+                                    <option value="JP">Japan</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" 
+                                       placeholder="Enter your phone number" 
+                                       pattern="[0-9]{10,}"
+                                       title="Please enter a valid phone number"
+                                       required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Payment Method -->
+                    <div class="payment">
+                        <h2>Payment Method</h2>
+                        <div class="inputs">
+                            <div class="payment-methods">
+                                <label class="payment-method">
+                                    <input type="radio" name="payment" value="cash" checked>
+                                    <span class="method-info">
+                                        <i class="fas fa-money-bill"></i>
+                                        Cash on Delivery
+                                    </span>
+                                </label>
+                                <label class="payment-method">
+                                    <input type="radio" name="payment" value="card">
+                                    <span class="method-info">
+                                        <i class="fas fa-credit-card"></i>
+                                        Credit Card
+                                    </span>
+                                </label>
+                            </div>
+                            <div id="card-details" style="display: none;">
+                                <label for="card-number">Card Number</label>
+                                <input type="text" id="card-number" pattern="[0-9]{16}" placeholder="1234 5678 9012 3456">
+                                
+                                <div class="card-extra">
+                                    <div>
+                                        <label for="expiry">Expiry Date</label>
+                                        <input type="text" id="expiry" placeholder="MM/YY">
+                                    </div>
+                                    <div>
+                                        <label for="cvv">CVV</label>
+                                        <input type="text" id="cvv" pattern="[0-9]{3,4}" placeholder="123">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Place Order Button -->
+                    <div class="place-order">
+                        <button type="submit" class="btn-place-order">
+                            Place Order <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </section>
+
+    <!-- JavaScript -->
+    <script src="../JS/submit_checkout.js"></script>
+    <script src="../JS/auth.js"></script>
+    <script src="../JS/main.js"></script>
+    <script src="../JS/search.js"></script>
+    <script src="../JS/wishlist.js"></script>
+    <script src="../JS/cart.js"></script>
+</body>
+</html>
+        <!-- const authButtons = document.getElementById('authButtons');
+        const userName = document.getElementById('userName');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const dropdownToggle = document.querySelector('.dropdown-toggle');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (currentUser) {
+          if (userDropdown) user    <script src="../JS/auth.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const userDropdown = document.getElementById('userDropdown');
+        const authButtons = document.getElementById('authButtons');
+        const userName = document.getElementById('userName');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const dropdownToggle = document.querySelector('.dropdown-toggle');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (currentUser) {
+          if (userDropdown) userDropdown.style.display = 'block';
+          if (authButtons) authButtons.style.display = 'none';
+          if (userName) userName.textContent = currentUser.name;
+        } else {
+          if (userDropdown) userDropdown.style.display = 'none';
+          if (authButtons) authButtons.style.display = 'flex';
+        }
+
+        if (dropdownToggle && dropdownMenu) {
+          dropdownToggle.addEventListener('click', () => {
+            dropdownMenu.classList.toggle('active');
+          });
+        }
+
+        if (logoutBtn) {
+          logoutBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            localStorage.removeItem('currentUser');
+            window.location.reload();
+          });
+        }
+
+        document.addEventListener('click', (e) => {
+          if (dropdownMenu && dropdownMenu.classList.contains('active') &&
+              !e.target.closest('.user-dropdown')) {
+            dropdownMenu.classList.remove('active');
+          }
+        });
+      });
+    </script>s.style.display = 'flex';
+      }
+
+        if (dropdownToggle && dropdownMenu) {
+          dropdownToggle.addEventListener('click', () => {
+            dropdownMenu.classList.toggle('active');
+          });
+        }
+
+        if (logoutBtn) {
+          logoutBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        localStorage.removeItem('currentUser');
+        window.location.reload();
+          });
+        }
+
+        document.addEventListener('click', (e) => {
+          if (dropdownMenu && dropdownMenu.classList.contains('active') &&
+              !e.target.closest('.user-dropdown')) {
+            dropdownMenu.classList.remove('active');
+          }
+        });
+      });
+    </script>
+
+        if (logoutBtn) {
+          logoutBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            localStorage.removeItem('currentUser');
+            window.location.reload();
+          });
+        }
+
+        document.addEventListener('click', (e) => {
+          if (dropdownMenu && dropdownMenu.classList.contains('active') &&
+              !e.target.closest('.user-dropdown')) {
+            dropdownMenu.classList.remove('active');
+          }
+        });
+      });
+    </script> -->
